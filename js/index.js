@@ -14,9 +14,7 @@ function toggleOpen() {
 };
 
 function toggleActive(event) {
-    if (event.propertyName.inlcludes('flex')) {
-        this.classList.toggle('open-active');
-    }
+    this.classList.toggle('open-active');
 };
 
 contentSection.forEach(slider => slider.addEventListener('mouseenter', toggleOpen));
@@ -36,7 +34,7 @@ destination.addEventListener('mousemove', function() {
     button.style.color = 'black';
 });
 
-// 5. Logo select
+// 5. Logo leave
 const logo = document.querySelector('h1');
 logo.addEventListener('mouseleave', function(event) {
     logo.style.color = "black";
@@ -47,3 +45,37 @@ const footer = document.querySelector('footer');
 footer.addEventListener('click', function() {
     footer.style.fontSize = '2rem';
 });
+
+// 7. Wheel rotation
+window.addEventListener('wheel', function() {
+    console.log('the wheel is turning!');
+});
+
+// 8. Screen resize
+window.addEventListener('resize', function() {
+    console.log('the screen was resized!');
+});
+
+// 9. Content Pick Revert
+destination.addEventListener('mouseout', function() {
+    destination.style.color = 'white';
+    button.style.color = 'white';
+});
+
+// 10. Link taunting
+const nav = document.querySelector('.nav-link');
+document.addEventListener('select', function(event) {
+    if (event.target === nav) {
+        console.log("be great if this did something");
+    }
+});
+
+// STOPPING REFERESH
+Array.from(document.links).forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      console.log(
+        `disrupting the default behavior of "${event.target.textContent}"`
+      );
+      event.preventDefault();
+    });
+  });
