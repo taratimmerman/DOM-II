@@ -1,7 +1,12 @@
 // Your code goes here
 
+// 1. Page Load
+const yellow = document.querySelector('.introText');
+window.addEventListener('load', function() {
+    yellow.classList.add('loaded');
+});
 
-// Middle Sliders
+// 2. Middle Sliders
 const contentSection = document.querySelectorAll('.text-content');
 
 function toggleOpen() {
@@ -14,11 +19,31 @@ function toggleActive(event) {
     }
 };
 
-contentSection.forEach(slider => slider.addEventListener('click', toggleOpen));
-contentSection.forEach(slider => slider.addEventListener('click', toggleActive));
+contentSection.forEach(slider => slider.addEventListener('mouseenter', toggleOpen));
+contentSection.forEach(slider => slider.addEventListener('mouseenter', toggleActive));
 
-// Destination fade
-const destination = document.querySelector('.content-destination');
-destination.addEventListener('dblclick', function (event) {
+// 3. Destination fade
+const destinationImg = document.querySelector('.content-destination');
+destinationImg.addEventListener('dblclick', function (event) {
     this.classList.toggle('active');
+});
+
+// 4. Content Pick
+const destination = document.querySelector('.destination');
+const button = document.querySelector('.btn');
+destination.addEventListener('mousemove', function() {
+    destination.style.color = '#feb849';
+    button.style.color = 'black';
+});
+
+// 5. Logo select
+const logo = document.querySelector('h1');
+logo.addEventListener('mouseleave', function(event) {
+    logo.style.color = "black";
+});
+
+// 6. Footer re-size
+const footer = document.querySelector('footer');
+footer.addEventListener('click', function() {
+    footer.style.fontSize = '2rem';
 });
